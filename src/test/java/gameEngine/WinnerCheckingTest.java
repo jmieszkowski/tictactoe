@@ -50,4 +50,22 @@ public class WinnerCheckingTest {
         assertFalse(winnerChecking.checkIfPlayerWins(boardObj,playerOne.getSymbol(),1));
 
     }
+
+    @Test
+    public void testIfDiagonallReturnTrue(){
+        boardObj = new Board(9);
+        Map<Integer, Character> board = boardObj.getBoard();
+
+
+        WinnerChecking winnerChecking = new WinnerChecking();
+        PlayerOne playerOne = new PlayerOne("player", new Symbol('X'));
+
+        playerOne.insertSymbol(boardObj,1);
+        playerOne.insertSymbol(boardObj,5);
+        playerOne.insertSymbol(boardObj,9);
+
+
+        assertTrue(winnerChecking.checkIfPlayerWins(boardObj,playerOne.getSymbol(),1));
+
+    }
 }

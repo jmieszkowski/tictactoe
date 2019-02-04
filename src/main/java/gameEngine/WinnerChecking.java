@@ -49,10 +49,10 @@ public class WinnerChecking {
 
     public boolean checkDiagonally(Map<Integer, Character> board, Character insertedSymbol, int k) {
 
-        int keyDiagonallyOneBefore = k - 3;
-        int keyDiagonallyTwoBefore = k - 6;
-        int keyDiagonallyOneNext = k + 3;
-        int keyDiagonallyTwoNext = k + 6;
+        int keyDiagonallyOneBefore = k - 4;
+        int keyDiagonallyTwoBefore = k - 8;
+        int keyDiagonallyOneNext = k + 4;
+        int keyDiagonallyTwoNext = k + 8;
 
         // this method check diagonally
         if (k == 1 || k == 3) {

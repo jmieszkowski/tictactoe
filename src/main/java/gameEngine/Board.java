@@ -36,6 +36,14 @@ public class Board {
         else
             return false;
     }
+    public boolean isBoardFull(){
+        for (int i =1; i <= board.size();i++){
+            if ((board.get(i)).equals(Character.MIN_VALUE))
+                return false;
+        }
+        return true;
+
+    }
 
     public void insert(int k, Symbol symbol){
         board.put(k,symbol.getSymbol());
