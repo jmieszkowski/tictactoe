@@ -12,8 +12,8 @@ public class Board {
     public Board(int size){
         board = new HashMap<Integer, Character>();
 
-        for(int i =0; i<size;i++) {
-            board.put(i, null);
+        for(int i =1; i<=size;i++) {
+            board.put(i, Character.MIN_VALUE);
             }
         }
 
@@ -31,7 +31,7 @@ public class Board {
     }
 
     public boolean isCellEmpty(int k) {
-        if (board.get(k) == null)
+        if (board.get(k) == Character.MIN_VALUE)
             return true;
         else
             return false;
