@@ -17,7 +17,7 @@ public class WinnerChecking {
             return true;
         }
         // this checks upright
-        else if (checkUpright(board,insertedSymbol,k))
+        else if (checkUpright(board, insertedSymbol, k))
             return true;
         else
             return false;
@@ -25,6 +25,7 @@ public class WinnerChecking {
 
     public boolean checkHorizontally(Map<Integer, Character> board, Character insertedSymbol, int k) {
 
+        int keyMinusTwo = k - 2;
         int keyMinusOne = k - 1;
         int keyPlusOne = k + 1;
         int keyPlusTwo = k + 2;
@@ -40,7 +41,7 @@ public class WinnerChecking {
                     return true;
         } else if (k == 3 || k == 6 || k == 9) {
             if (board.get(keyMinusOne).equals(insertedSymbol))
-                if (board.get(keyPlusOne).equals(insertedSymbol))
+                if (board.get(keyMinusTwo).equals(insertedSymbol))
                     return true;
         }
 
@@ -60,10 +61,15 @@ public class WinnerChecking {
                 if (board.get(keyDiagonallyTwoNext).equals(insertedSymbol))
                     return true;
 
-        } else if (k == 7 || k == 9) {
+        } else if (k == 9) {
             if (board.get(keyDiagonallyOneBefore).equals(insertedSymbol))
                 if (board.get(keyDiagonallyTwoBefore).equals(insertedSymbol))
                     return true;
+        } else if (k == 7) {
+            if (board.get(5).equals(insertedSymbol))
+                if (board.get(3).equals(insertedSymbol))
+                    return true;
+
         }
         return false;
     }

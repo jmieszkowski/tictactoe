@@ -26,8 +26,11 @@ public class PlayerOne implements Player {
     }
 
     @Override
-    public void insertSymbol(Board board, int k) {
-            board.insert(k,this.getSymbol());
+    public boolean insertSymbol(Board board, int k) {
+        if (board.isCellEmpty(k)) {
+            board.insert(k, this.getSymbol());
+            return true;
+        } else return false;
     }
 
 }

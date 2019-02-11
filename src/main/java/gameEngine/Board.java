@@ -22,11 +22,11 @@ public class Board {
         return board;
     }
 
-    public int getSize(){
+    int getSize(){
         return board.size();
     }
 
-    public boolean isBoardEmpty(){
+    boolean isBoardEmpty(){
         return board.isEmpty();
     }
 
@@ -36,7 +36,7 @@ public class Board {
         else
             return false;
     }
-    public boolean isBoardFull(){
+    boolean isBoardFull(){
         for (int i =1; i <= board.size();i++){
             if ((board.get(i)).equals(Character.MIN_VALUE))
                 return false;
@@ -45,7 +45,7 @@ public class Board {
 
     }
 
-    public void insert(int k, Symbol symbol){
+    void insert(int k, Symbol symbol){
         board.put(k,symbol.getSymbol());
     }
 
