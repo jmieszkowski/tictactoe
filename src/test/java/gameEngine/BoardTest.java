@@ -47,7 +47,7 @@ public class BoardTest {
         // GIVEN
         boardObj = new Board(9);
         Map<Integer, Character> board = boardObj.getBoard();
-        Symbol x = new Symbol('X');
+        Symbol x = Symbol.cross;
         Integer field = new Integer(1);
         // WHEN
         boardObj.insert(field, x);

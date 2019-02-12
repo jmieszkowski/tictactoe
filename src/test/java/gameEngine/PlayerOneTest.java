@@ -19,7 +19,7 @@ public class PlayerOneTest {
     public void testIfInsertWorks(){
         // GIVEN
         boardObj = new Board(9);
-        PlayerOne playerOne = new PlayerOne("Player", new Symbol('X'));
+        PlayerOne playerOne = new PlayerOne("Player", Symbol.cross);
         Map<Integer, Character> board = boardObj.getBoard();
         playerOne.insertSymbol(boardObj,5);
         assertTrue(board.get(5).equals(playerOne.getSymbol().getSymbol()));

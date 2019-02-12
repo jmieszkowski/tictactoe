@@ -1,13 +1,10 @@
 package gameEngine;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Main {
     public static void main(String[] args) {
         Board board = new Board(9);
-        PlayerOne playerOne = new PlayerOne("Player 1", new Symbol('X'));
-        PlayerTwo playerTwo = new PlayerTwo("Player 2", new Symbol('O'));
+        PlayerOne playerOne = new PlayerOne("Player 1", Symbol.cross);
+        PlayerTwo playerTwo = new PlayerTwo("Player 2", Symbol.circle);
         DrawBoard drawBoard = new DrawBoard(board.getBoard());
         WinnerChecking winnerChecking = new WinnerChecking();
         int k;
@@ -17,7 +14,7 @@ public class Main {
 
             System.out.println("PlayerOne, Insert symbol!");
             for (; true; ) {
-                k = playerOne.getSymbolFromPlayer(board);
+                k = playerOne.getInsertKeyFromPlayer(board);
                 if (playerOne.insertSymbol(board, k))
                     break;
                 else System.out.println("Cell is not empty, choose cell again!");
@@ -34,7 +31,7 @@ public class Main {
             }
             System.out.println("PlayerTwo, Insert symbol!");
             for (; true; ) {
-                k = playerTwo.getSymbolFromPlayer(board);
+                k = playerTwo.getInsertKeyFromPlayer(board);
                 if (playerTwo.insertSymbol(board, k))
                     break;
                 else System.out.println("Cell is not empty, choose cell again!");

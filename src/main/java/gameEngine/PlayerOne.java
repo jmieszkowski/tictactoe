@@ -4,6 +4,7 @@ public class PlayerOne implements Player {
     String name;
     Symbol symbol;
 
+
     public PlayerOne(String name, Symbol symbol) {
         this.name = name;
         this.symbol = symbol;

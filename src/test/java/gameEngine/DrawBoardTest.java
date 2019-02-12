@@ -33,7 +33,7 @@ public class DrawBoardTest {
         boardObj = new Board(9);
         Map<Integer, Character> board = boardObj.getBoard();
         drawBoard = new DrawBoard(board);
-        Symbol x = new Symbol('X');
+        Symbol x = Symbol.cross;
         Integer field = new Integer(1);
         // WHEN
         boardObj.insert(field, x);
@@ -46,7 +46,7 @@ public class DrawBoardTest {
         boardObj = new Board(9);
         Map<Integer, Character> board = boardObj.getBoard();
         drawBoard = new DrawBoard(board);
-        Symbol x = new Symbol('X');
+        Symbol x = Symbol.cross;
         for (int i=1; i<= 9; i++){
             System.out.println(i);
             boardObj.insert(i,x);

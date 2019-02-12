@@ -1,25 +1,16 @@
 package gameEngine;
 
-import java.util.Objects;
+public enum Symbol {
+    cross('X'),
+    circle('O');
 
-public class Symbol {
-    Character symbol;
+    private Character symbol;
 
-    public Symbol(Character symbol){
+    Symbol(Character symbol) {
         this.symbol = symbol;
-        this.validateSymbol();
     }
 
     public Character getSymbol() {
         return symbol;
     }
-
-
-
-    public void validateSymbol() throws RuntimeException{
-        if (!this.symbol.equals('X') && !this.symbol.equals('O'))
-            WrongSymbolExcThrower.throwWrongSymbolExc();
-    }
-
 }
-
