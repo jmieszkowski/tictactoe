@@ -1,8 +1,8 @@
 package gameEngine;
 
 public class PlayerTwo implements Player {
-    String name;
-    Symbol symbol;
+    final String name;
+    final Symbol symbol;
 
     public PlayerTwo(String name, Symbol symbol) {
         this.name = name;
@@ -13,21 +13,13 @@ public class PlayerTwo implements Player {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Symbol getSymbol() {
         return symbol;
     }
 
-    public void setSymbol(Symbol symbol) {
-        this.symbol = symbol;
-    }
-
     @Override
     public boolean insertSymbol(Board board, int k) {
-        if (board.isCellEmpty(k)) {
+        if (board.isCellEmpty(k)) { // check if cell is empty, i dont want to reassign value to any key
             board.insert(k, this.getSymbol());
             return true;
         } else return false;

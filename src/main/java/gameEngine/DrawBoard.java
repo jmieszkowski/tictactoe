@@ -10,11 +10,6 @@ public class DrawBoard {
         this.board = board;
     }
     void drawBoard(){
-//        System.out.println("  :  :  ");
-//        System.out.println("..:..:...");
-//        System.out.println("  :  :  ");
-//        System.out.println("..:..:...");
-//        System.out.println("  :  :  ");
         System.out.println(String.format((" %s : %s : %s "),
                 replaceEmptyCellWithNumber(board.get(1),1),
                 replaceEmptyCellWithNumber(board.get(2),2),
@@ -31,7 +26,7 @@ public class DrawBoard {
                 replaceEmptyCellWithNumber(board.get(9),9)));
 
     }
-
+    // replace empty cell with its key
     private static Character replaceEmptyCellWithNumber(Character ch, int i){
         if (ch == Character.MIN_VALUE)
             return (Character.forDigit(i,10));

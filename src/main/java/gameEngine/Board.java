@@ -1,8 +1,6 @@
 package gameEngine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Board {
@@ -13,7 +11,7 @@ public class Board {
         board = new HashMap<Integer, Character>();
 
         for(int i =1; i<=size;i++) {
-            board.put(i, Character.MIN_VALUE);
+            board.put(i, Character.MIN_VALUE); // Character.MIN_VALUE because i dont want to have null here
             }
         }
 
@@ -26,7 +24,7 @@ public class Board {
         return board.size();
     }
 
-    boolean isBoardEmpty(){
+    boolean isBoardEmpty(){ // used to check if initialed board is empty
         return board.isEmpty();
     }
 
@@ -36,7 +34,7 @@ public class Board {
         else
             return false;
     }
-    boolean isBoardFull(){
+    boolean isBoardFull(){ // used to end game if the board is full
         for (int i =1; i <= board.size();i++){
             if ((board.get(i)).equals(Character.MIN_VALUE))
                 return false;

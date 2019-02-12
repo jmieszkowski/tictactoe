@@ -3,8 +3,9 @@ package gameEngine;
 import java.util.Map;
 import java.util.Objects;
 
-public class WinnerChecking {
-    public boolean checkIfPlayerWins(Board boardObj, Symbol symbol, int k) {
+ class WinnerChecking {
+    // used to check if player wins, every turn
+    boolean checkIfPlayerWins(Board boardObj, Symbol symbol, int k) {
         Map<Integer, Character> board = boardObj.getBoard();
         Character insertedSymbol = board.get(k);
 
@@ -12,7 +13,7 @@ public class WinnerChecking {
         if (checkHorizontally(board, insertedSymbol, k)) {
             return true;
         }
-        // this checks diagonally from left to right
+        // this checks diagonally
         else if (checkDiagonally(board, insertedSymbol, k)) {
             return true;
         }
@@ -23,14 +24,14 @@ public class WinnerChecking {
             return false;
     }
 
-    public boolean checkHorizontally(Map<Integer, Character> board, Character insertedSymbol, int k) {
+    // check horizontally
+    private boolean checkHorizontally(Map<Integer, Character> board, Character insertedSymbol, int k) {
 
         int keyMinusTwo = k - 2;
         int keyMinusOne = k - 1;
         int keyPlusOne = k + 1;
         int keyPlusTwo = k + 2;
 
-        // this method check horizontally
         if (k == 1 || k == 4 || k == 7) {
             if (board.get(keyPlusOne).equals(insertedSymbol))
                 if (board.get(keyPlusTwo).equals(insertedSymbol))
@@ -47,15 +48,14 @@ public class WinnerChecking {
 
         return false;
     }
-
-    public boolean checkDiagonally(Map<Integer, Character> board, Character insertedSymbol, int k) {
+    // check diagonally
+    private boolean checkDiagonally(Map<Integer, Character> board, Character insertedSymbol, int k) {
 
         int keyDiagonallyOneBefore = k - 4;
         int keyDiagonallyTwoBefore = k - 8;
         int keyDiagonallyOneNext = k + 4;
         int keyDiagonallyTwoNext = k + 8;
 
-        // this method check diagonally
         if (k == 1 || k == 3) {
             if (board.get(keyDiagonallyOneNext).equals(insertedSymbol))
                 if (board.get(keyDiagonallyTwoNext).equals(insertedSymbol))
@@ -74,14 +74,14 @@ public class WinnerChecking {
         return false;
     }
 
-    public boolean checkUpright(Map<Integer, Character> board, Character insertedSymbol, int k) {
+     // check upright
+     private boolean checkUpright(Map<Integer, Character> board, Character insertedSymbol, int k) {
         int keyUprightOneBefore = k - 3;
         int keyUprightTwoBefore = k - 6;
         int keyUprightOneNext = k + 3;
         int keyUprightTwoNext = k + 6;
 
 
-        // this method checks upright
         if (k == 1 || k == 2 || k == 3) {
             if (board.get(keyUprightOneNext).equals(insertedSymbol))
                 if (board.get(keyUprightTwoNext).equals(insertedSymbol))
