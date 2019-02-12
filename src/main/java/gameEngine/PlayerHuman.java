@@ -1,10 +1,11 @@
 package gameEngine;
 
-public class PlayerTwo implements Player {
+public class PlayerHuman implements Player {
     final String name;
     final Symbol symbol;
 
-    public PlayerTwo(String name, Symbol symbol) {
+
+    public PlayerHuman(String name, Symbol symbol) {
         this.name = name;
         this.symbol = symbol;
     }

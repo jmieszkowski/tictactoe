@@ -1,13 +1,13 @@
 package gameEngine;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import java.util.Map;
-
-public class PlayerTwoTest {
-
+import static org.junit.Assert.*;
+public class PlayerHumanTest {
     Board boardObj;
+
 
     @Before
     public void setUp(){
@@ -18,13 +18,9 @@ public class PlayerTwoTest {
     public void testIfInsertWorks(){
         // GIVEN
         boardObj = new Board(9);
-        PlayerTwo playerOne = new PlayerTwo("Player", Symbol.cross);
+        PlayerHuman playerOne = new PlayerHuman("Player", Symbol.cross);
         Map<Integer, Character> board = boardObj.getBoard();
-        playerOne.insertSymbol(boardObj,2);
-        assertTrue(board.get(2).equals(playerOne.getSymbol().getSymbol()));
-
-
+        playerOne.insertSymbol(boardObj,5);
+        assertTrue(board.get(5).equals(playerOne.getSymbol().getSymbol()));
     }
-
-
 }

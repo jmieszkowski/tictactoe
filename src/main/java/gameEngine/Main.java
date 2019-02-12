@@ -3,8 +3,8 @@ package gameEngine;
 public class Main {
     public static void main(String[] args) {
         Board board = new Board(9);
-        PlayerOne playerOne = new PlayerOne("Player 1", Symbol.cross);
-        PlayerTwo playerTwo = new PlayerTwo("Player 2", Symbol.circle);
+        PlayerHuman playerOne = new PlayerHuman("Player 1", Symbol.cross);
+        PlayerHuman playerTwo = new PlayerHuman("Player 2", Symbol.circle);
         DrawBoard drawBoard = new DrawBoard(board.getBoard());
         WinnerChecking winnerChecking = new WinnerChecking();
         int k;
@@ -12,7 +12,7 @@ public class Main {
 
         while (true) {
 
-            System.out.println("PlayerOne, Insert symbol!");
+            System.out.println("PlayerHuman, Insert symbol!");
             for (; true; ) {
                 k = playerOne.getInsertKeyFromPlayer(board);
                 if (playerOne.insertSymbol(board, k))
