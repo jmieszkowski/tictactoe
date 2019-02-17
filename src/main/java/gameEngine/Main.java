@@ -6,7 +6,9 @@ public class Main {
         PlayerHuman playerOne = new PlayerHuman("Player 1", Symbol.cross);
         PlayerHuman playerTwo = new PlayerHuman("Player 2", Symbol.circle);
         DrawBoard drawBoard = new DrawBoard(board.getBoard());
-        WinnerChecking winnerChecking = new WinnerChecking();
+        WinnerChecking winnerCheckingPlayerOne = new WinnerChecking();
+        WinnerChecking winnerCheckingPlayerTwo = new WinnerChecking();
+
         int k;
         drawBoard.drawBoard();
 
@@ -20,7 +22,7 @@ public class Main {
                 else System.out.println("Cell is not empty, choose cell again!");
             }
             drawBoard.drawBoard();
-            if (winnerChecking.checkIfPlayerWins(board, playerOne.getSymbol(), k)) {
+            if (winnerCheckingPlayerOne.checkIfPlayerWins(board, playerOne.getSymbol())) {
                 System.out.println(playerOne.getName() + " wins!!");
                 break;
             }
@@ -37,7 +39,7 @@ public class Main {
                 else System.out.println("Cell is not empty, choose cell again!");
             }
             drawBoard.drawBoard();
-            if (winnerChecking.checkIfPlayerWins(board, playerTwo.getSymbol(), k)) {
+            if (winnerCheckingPlayerTwo.checkIfPlayerWins(board, playerTwo.getSymbol())) {
                 System.out.println(playerTwo.getName() + " wins!!");
                 break;
             }

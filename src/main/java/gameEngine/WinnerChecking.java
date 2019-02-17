@@ -1,102 +1,39 @@
 package gameEngine;
 
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
- class WinnerChecking {
-    // used to check if player wins, every turn
-    boolean checkIfPlayerWins(Board boardObj, Symbol symbol, int k) {
+class WinnerChecking {
+    // this list contains all possibilities to win
+    private List<List> winPossibilities = new LinkedList<>(Arrays.asList(
+            // horizontally
+            new LinkedList<>(Arrays.asList(1, 2, 3)),
+            new LinkedList<>(Arrays.asList(4, 5, 6)),
+            new LinkedList<>(Arrays.asList(7, 8, 9)),
+            // upright
+            new LinkedList<>(Arrays.asList(1, 4, 7)),
+            new LinkedList<>(Arrays.asList(2, 5, 8)),
+            new LinkedList<>(Arrays.asList(3, 6, 9)),
+            // diagonally
+            new LinkedList<>(Arrays.asList(1, 5, 9)),
+            new LinkedList<>(Arrays.asList(3, 5, 7))
+            )
+    );
+
+    private Set<Integer> symbolsFromPlayerOnBoard = new LinkedHashSet<>();
+
+    // used to check if player wins
+    boolean checkIfPlayerWins(Board boardObj, Symbol symbol) {
+
         Map<Integer, Character> board = boardObj.getBoard();
-        Character insertedSymbol = board.get(k);
+        Character insertedSymbol = symbol.getSymbol();
 
-        // this checks horizontally
-        if (checkHorizontally(board, insertedSymbol, k)) {
-            return true;
-        }
-        // this checks diagonally
-        else if (checkDiagonally(board, insertedSymbol, k)) {
-            return true;
-        }
-        // this checks upright
-        else if (checkUpright(board, insertedSymbol, k))
-            return true;
-        else
-            return false;
-    }
+        for (int i = 1; i <= board.size(); i++)
+            if (board.get(i).equals(insertedSymbol)) symbolsFromPlayerOnBoard.add(i);
 
-    // check horizontally
-    private boolean checkHorizontally(Map<Integer, Character> board, Character insertedSymbol, int k) {
-
-        int keyMinusTwo = k - 2;
-        int keyMinusOne = k - 1;
-        int keyPlusOne = k + 1;
-        int keyPlusTwo = k + 2;
-
-        if (k == 1 || k == 4 || k == 7) {
-            if (board.get(keyPlusOne).equals(insertedSymbol))
-                if (board.get(keyPlusTwo).equals(insertedSymbol))
-                    return true;
-        } else if (k == 2 || k == 5 || k == 8) {
-            if (board.get(keyMinusOne).equals(insertedSymbol))
-                if (board.get(keyPlusOne).equals(insertedSymbol))
-                    return true;
-        } else if (k == 3 || k == 6 || k == 9) {
-            if (board.get(keyMinusOne).equals(insertedSymbol))
-                if (board.get(keyMinusTwo).equals(insertedSymbol))
-                    return true;
-        }
-
-        return false;
-    }
-    // check diagonally
-    private boolean checkDiagonally(Map<Integer, Character> board, Character insertedSymbol, int k) {
-
-        int keyDiagonallyOneBefore = k - 4;
-        int keyDiagonallyTwoBefore = k - 8;
-        int keyDiagonallyOneNext = k + 4;
-        int keyDiagonallyTwoNext = k + 8;
-
-        if (k == 1 || k == 3) {
-            if (board.get(keyDiagonallyOneNext).equals(insertedSymbol))
-                if (board.get(keyDiagonallyTwoNext).equals(insertedSymbol))
-                    return true;
-
-        } else if (k == 9) {
-            if (board.get(keyDiagonallyOneBefore).equals(insertedSymbol))
-                if (board.get(keyDiagonallyTwoBefore).equals(insertedSymbol))
-                    return true;
-        } else if (k == 7) {
-            if (board.get(5).equals(insertedSymbol))
-                if (board.get(3).equals(insertedSymbol))
-                    return true;
-
+        for (List<Integer> l : winPossibilities){
+         if (symbolsFromPlayerOnBoard.contains(l.get(0)) && symbolsFromPlayerOnBoard.contains(l.get(1))
+                    && symbolsFromPlayerOnBoard.contains(l.get(2))) return true;
         }
         return false;
-    }
-
-     // check upright
-     private boolean checkUpright(Map<Integer, Character> board, Character insertedSymbol, int k) {
-        int keyUprightOneBefore = k - 3;
-        int keyUprightTwoBefore = k - 6;
-        int keyUprightOneNext = k + 3;
-        int keyUprightTwoNext = k + 6;
-
-
-        if (k == 1 || k == 2 || k == 3) {
-            if (board.get(keyUprightOneNext).equals(insertedSymbol))
-                if (board.get(keyUprightTwoNext).equals(insertedSymbol))
-                    return true;
-        } else if (k == 4 || k == 5 || k == 6) {
-            if (board.get(keyUprightOneBefore).equals(insertedSymbol))
-                if (board.get(keyUprightOneNext).equals(insertedSymbol))
-                    return true;
-        } else if (k == 7 || k == 8 || k == 9) {
-            if (board.get(keyUprightOneBefore).equals(insertedSymbol))
-                if (board.get(keyUprightTwoBefore).equals(insertedSymbol))
-                    return true;
-        }
-
-        return false;
-
     }
 }
